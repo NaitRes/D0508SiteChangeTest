@@ -41,7 +41,9 @@
                         <h1 class="mx-auto my-0 text-uppercase">- 鳴 潮 -</h1>
                         <br>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">&nbsp;&nbsp;&nbsp;潮聲循環往復&nbsp;，&nbsp;文明再度啟程&nbsp;。&nbsp;&nbsp;&nbsp;</h2>
-                        <a class="btn btn-primary" href="#about">開始瀏覽</a>
+                        <a class="btn btn-primary" href="#about">開始瀏覽
+                            (點擊頁面，可啟動背景音樂)
+                        </a>
                     </div>
                 </div>
             </div>
@@ -300,5 +302,26 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!-- 背景音樂 -->
+        <audio id="bgMusic" loop preload="auto">
+            <source src="assets/audio/BGM.mp3" type="audio/mpeg">
+            您的瀏覽器不支援音樂播放。
+        </audio>
+
+        <script>
+            const music = document.getElementById("bgMusic");
+            let hasPlayed = false;
+
+            document.body.addEventListener("click", () => {
+                if (!hasPlayed) {
+                    music.play().catch(err => {
+                        console.warn("音樂播放失敗：", err);
+                    });
+                    hasPlayed = true;
+                }
+            }, { once: true }); // 確保只執行一次
+        </script>
+
     </body>
 </html>
